@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Css } from "./App.css";
 // import { NormalizeStyles } from "./shared/NormalizeStyles";
 
-import { Home } from "./screens/Home";
+import { Home } from "./screens/Home/Home";
 import { About } from "./screens/About";
 import { NotFound } from "./screens/NotFound";
 
