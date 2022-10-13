@@ -24,7 +24,7 @@ section {
 }
 
 .home-image > div::after {
-    content: url(./../../icons/EditIcon.svg);
+    content: url(../../assets/icons/EditIcon.svg);
     position: absolute;
     visibility: hidden;
     opacity: 0;

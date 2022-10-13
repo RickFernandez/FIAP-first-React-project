@@ -1,0 +1,39 @@
+h2 {
+    text-align: center;
+    color: #56dbb2;
+    border: ridge;
+}
+
+.mb-3 {
+    padding: 20px;
+    text-align: center;
+    width: 400px;
+}
+
+div#formBasicNumber {
+    padding: 15px;
+}
+
+input#formPlaintextEmail {
+    padding: 20px;
+    text-align: center;
+}
+
+form {
+    text-align: -webkit-center;
+}
+
+button.btn.btn-danger {
+    margin: 20px;
+    background-color: #db5656;
+}
+
+button.btn.btn-success {
+    margin: 20px;
+    background-color: #56dbb2;
+}
+
+button.btn.btn-warning {
+    margin: 20px;
+    background-color: #dba156;
+}
