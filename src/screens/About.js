@@ -34,7 +34,7 @@ const checkCEP = (e) => {
         </Form.Label>
         </Form.Group>
 
-        < Button > Buscar </Button>
+        < Button style={{ width: '15vw' }} > Buscar </Button>
 
         <Form.Group className = "mb-3" >
         <Form.Label>
