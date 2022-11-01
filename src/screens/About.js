@@ -1,81 +1,76 @@
+import React from "react";
 import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
+import { useForm } from "react-hook-form"
+import { Button } from '../common-components/Button/Button';
 
 export function About() {
+const {register, handleSubmit, setValue, setFocus} = useForm();
+const onSubmit = (e) => { 
+    console.log(e);
+}
+
+const checkCEP = (e) => {
+    const cep = e.target.value.replace(/\D/g, '');    
+    fetch(`https://viacep.com.br/ws/${cep}/json`)
+        .then(res => res.json()).then(data =>{
+            console.log(data);
+            setValue('address', data.logradouro)
+            setValue('bairro', data.bairro)
+            setValue('cidade', data.localidade)
+            setValue('uf', data.uf)           
+            setFocus('addressNumber')            
+        })
+}
+
   return (
-    <>
-        <h2>Sobre você</h2>
+    <>   
+    <h2> Sobre você </h2> 	
 
-        <Form>
-        <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label >Email</Form.Label>
-            <Form.Control type="email" placeholder="Digite seu email" />
-
-            <Form.Text className="text-muted">
-            Iremos te mandar uma confirmação da conta.
-            </Form.Text>
+    <Form onSubmit={handleSubmit(onSubmit)}>
+        <Form.Group className="mb-3"> 
+         <Form.Label>
+            CEP:        
+            <Form.Control type="text" {...register("cep")} onBlur={checkCEP}/>
+        </Form.Label>
         </Form.Group>
 
-        <Form.Group className="mb-3" controlId="formBasicName">
-            <Form.Label>Nome</Form.Label>
-            <Form.Control type="text" placeholder="Digite seu nome" />
+        < Button > Buscar </Button>
+
+        <Form.Group className = "mb-3" >
+        <Form.Label>
+            Rua:        
+            <Form.Control type="text" {...register("address")}/>
+        </Form.Label>
         </Form.Group>
 
-        <Form.Group className="mb-3" controlId="formBasicLastName">
-            <Form.Label>Sobrenome</Form.Label>
-            <Form.Control type="text" placeholder="Digite seu sobrenome" />
+        <Form.Group className = "mb-3" >
+        <Form.Label>
+            Número:        
+            <Form.Control type="text" {...register("addressNumber")}/>
+        </Form.Label>
         </Form.Group>
 
-        <Form.Group className="mb-3" controlId="formBasicPassword">
-            <Form.Label>Senha</Form.Label>
-            <Form.Control type="password" placeholder="Digite sua senha" />
-
-            <Form.Text className="text-muted">
-            Deve ter um símbolo, letra maiúscula, número, e no mínimo 8 caracteres.
-            </Form.Text>
+        <Form.Group className = "mb-3" >
+        <Form.Label>
+            Bairro:        
+            <Form.Control type="text" {...register("bairro")}/>
+        </Form.Label>
         </Form.Group>
 
-        <Form.Group className="mb-3" controlId="formBasicNumber">
-            <Form.Label>Telefone</Form.Label>
-            <Row>
-                <Form.Control as={Col} type="number" placeholder="DDD" inline/>
-                <Form.Control as={Col} type="number" placeholder="00000" inline/>
-                <Form.Control as={Col} type="number" placeholder="0000" inline/>
-            </Row>
+        <Form.Group className = "mb-3">
+        <Form.Label>
+            Cidade:        
+            <Form.Control type="text" {...register("cidade")}/>
+        </Form.Label>
         </Form.Group>
 
-        <Form.Group className="mb-3" controlId="formBasicRadio">
-            <Form.Label>Conecte-se (Opcional): </Form.Label>
-                    <Form.Check type="radio" label="GitHub" />
-                    <Form.Check type="radio" label="Redes Sociais" />
-        </Form.Group>
-
-        <Form.Group as={Row} className="mb-3" controlId="formPlaintextEmail">
-            <Form.Label column sm="2">
-            CEP/ Endereço
-            </Form.Label>
-            <Form.Control plaintext placeholder="00000-000" />
-        </Form.Group>
-
-        <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-            <Form.Label>Apresentação Pessoal</Form.Label>
-            <Form.Control as="textarea" rows={7} placeholder="Uma breve apresentação sobre você;" />
-        </Form.Group>
-
-        <Button variant="danger" type="">
-            Cancelar
-        </Button>
-
-        <Button variant="success" type="submit">
-            Salvar
-        </Button>
-
-        <Button variant="warning" type="submit">
-            Alterar
-        </Button>
-        </Form>
+        <Form.Group className = "mb-3">
+         <Form.Label>
+            Estado:        
+            <Form.Control type="text" {...register("uf")}/>
+        </Form.Label>
+        </Form.Group>    
+    </Form>
     </>
   );
 }

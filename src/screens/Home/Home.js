@@ -1,22 +1,26 @@
 import { HomeCss } from "./Home.css";
-
+import axios from 'axios';
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Navbar from "react-bootstrap/Navbar";
 import Button from "react-bootstrap/Button";
 import { Container } from "react-bootstrap";
 
-import BackgroundImage from "../../images/HomeBackgroundImage.jpg";
-import NoprofilePic from "../../images/NoProfilePic.webp";
-import ExperienceIcon from "../../icons/ExperienceIcon.svg";
-import FormationIcon from "../../icons/FormationIcon.svg";
-import HobbiesIcon from "../../icons/HobbiesIcon.svg";
-import AboutIcon from "../../icons/AboutIcon.svg";
+import BackgroundImage from "../../assets/images/HomeBackgroundImage.jpg";
+import NoprofilePic from "../../assets/images/NoProfilePic.webp";
+import ExperienceIcon from "../../assets/icons/ExperienceIcon.svg";
+import FormationIcon from "../../assets/icons/FormationIcon.svg";
+import HobbiesIcon from "../../assets/icons/HobbiesIcon.svg";
+import AboutIcon from "../../assets/icons/AboutIcon.svg";
+
+
 
 export function Home() {
   return (
-    <>
-      <section>
+    <>   
+    
+      <section> 
+
         <div
           className="home-image"
           style={{
@@ -117,7 +121,8 @@ export function Home() {
               Log in
             </Button>
           </div>
-        </Container>
+        </Container>       
+
       </section>
     </>
   );
